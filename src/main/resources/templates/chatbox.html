@@ -1,0 +1,57 @@
+<link href="/css/chatbox.css" rel="stylesheet">
+<script src="/js/chatbox.js"></script>
+<script src="/js/responses_chatbox.js"></script>
+
+<!--Live Chat-->
+<div class="fixed-live-chat position-fixed p-1">
+    <div class="live-chat position-relative">
+        <button type="button" class="chatbox" style="width: 50px;height: 50px;">
+
+            <i class="fab fa-facebook-messenger "></i>
+            <!-- <i class="fas fa-facebook-messenger pl-1"></i> -->
+        </button>
+
+        <!--dropdown-->
+        <div class="dropchat">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header d-flex align-items-center justify-content-between bg-light">
+                    <h5 class="m-0">
+                        <img class="chat-avater" src="./img/logo.png" alt="">
+                        Nhắn tin cho chúng tôi!
+                        <!-- <span class="text-success">(10:00am-4:00pm)</span> -->
+                    </h5>
+                    <button type="button" class="close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="card-body bg-light" style="max-height: 270px;overflow: auto;">
+                    <h6 class="chat-timestamp" style="text-align: center;"></h6>
+                    <div class="list">
+                        <img class="chat-avater" src="./images/fav.png" alt="">
+                        <div class="chat-content">
+                            <p>Bạn muốn tôi giúp gì?</p>
+                        </div>
+                    </div>
+                    <div class="list " id="chatbox">
+
+                    </div>
+                    <!-- <div class="list">
+                <img class="chat-avater" src="./img/avater.png" alt="">
+                <div class="chat-content">
+                  <p>Sure! Check out the Website <a target="_blank" href="https://codepen.io/gazishowrav">https://codepen.io/gazishowrav</a></p>
+                </div>
+              </div> -->
+                </div>
+
+                <div class="card-footer border p-0">
+                    <form class="typer" style="background-color: wheat;">
+                        <input id="textInput" type="text" style="margin-right: 20%;" placeholder="Viết tin nhắn...">
+                        <span onclick="heartButton()" style="margin-right: 10%;color: red;" type="submit"
+                            class="fas fa-heart"></span>
+                        <span onclick="sendButton1()" style="margin-right: 1%;" type="submit"
+                            class="fas fa-paper-plane send"></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Live Chat-->
