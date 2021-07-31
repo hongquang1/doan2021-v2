@@ -1,5 +1,7 @@
 package fpt.edu.mlem.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,12 @@ public class Account {
 	private String email;
 	private String fullName;
 	private String gender;
+	private String phone;
+	private String linkFace;
+	private String linkYoutube;
+	private String about;
+	private String dob;
+	private Date dateCreate;
 	private boolean enable;
 	private String avatar;
 	@Column(name = "auth_provider")

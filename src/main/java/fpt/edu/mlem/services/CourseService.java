@@ -24,12 +24,18 @@ public class CourseService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
-
-	
+	public void setSale(int id, int sale ,String startSale , String endSale) {
+		generalCourseRepository.setSaleCourse(id, sale, startSale, endSale);;
+	}
+	public List<Course> listAllCourse(){
+		return generalCourseRepository.findAll();
+	}
 	public Page<Course> getGeneralCoursePage(int page,int quantity) {
 		return  generalCourseRepository.findAll(PageRequest.of(page, quantity));
 	}
-
+	public List<Course> getCourseByStatus(String status){
+		return generalCourseRepository.getCoursebyStatus(status);
+	}
 	
 	public Course saveGeneralCourse(Course generalCourse,int[] cateIdArray,Level levelCourse,Account manager) {
 		
@@ -51,11 +57,11 @@ public class CourseService {
 		generalCourse.setLevel(levelCourse);
 		
 		generalCourse.setCreateDate(new Date());
+		generalCourse.setStatus("Đang xử lý");;
 		
 		return generalCourseRepository.save(generalCourse);  
 	}
 
-	
 	public void deleteGeneralCourse(int id) {
 		generalCourseRepository.deleteById(id);
 	}

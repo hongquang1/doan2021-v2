@@ -1,14 +1,14 @@
 package fpt.edu.mlem.entities;
 
-import java.util.HashSet;
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -19,19 +19,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Test {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int testId;
 
-	private String name;
+//	@Column(name = "tenbaithithu")
+	private String nameTest;
 
-	private String imageUrl;
-	@OneToMany(mappedBy = "test")
-	Set<Question> questionSet = new HashSet<>(); 
-	@OneToMany(mappedBy = "test")
-	Set<TestResult> testResultSet = new HashSet<>();
+//	@Column(name = "anhbaithithu")
+	private String imageTest;
 
 }

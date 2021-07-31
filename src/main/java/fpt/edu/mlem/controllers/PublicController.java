@@ -7,8 +7,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.mlem.entities.Account;
 import fpt.edu.mlem.entities.Course;
@@ -18,6 +21,7 @@ import fpt.edu.mlem.services.AccountService;
 import fpt.edu.mlem.services.CourseService;
 import fpt.edu.mlem.services.ListStudentService;
 import fpt.edu.mlem.services.VoteService;
+
 
 @Controller
 public class PublicController {
@@ -272,6 +276,66 @@ public class PublicController {
 			
 		return "KhoaHocCuaToi";
 	}
+	@RequestMapping("/profileAccount")
+	public String Profile(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+			Model model) {
+		if(userCookie.equals("defaultCookieValue")) {
+			
+			
+			model.addAttribute("user", null);
+		} 
+		else {
+			Account user = userService.getAccount(userCookie);
+			List<Vote> votStudent =  voteSer.getVoteByStudent(user.getId());
+			model.addAttribute("votStudent" , votStudent);
+			model.addAttribute("user", user);
+		
+		}
+			
+		return "my_instructor_profile_view";
+	}
+	@RequestMapping("/editprofile")
+	public String SetingProfile(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+			Model model) {
+		if(userCookie.equals("defaultCookieValue")) {
+			
+			
+			model.addAttribute("user", null);
+		} 
+		else {
+			Account user = userService.getAccount(userCookie);
+		
+			model.addAttribute("user", user);
+
+		}
+			
+		return "setting";
+	}
+	@RequestMapping(value = "/saveprofile", method = RequestMethod.POST)
+	public String SaveProfile(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+			Model model,@RequestParam("fullName") String fullName,
+			@RequestParam("phone") String phone,
+			@RequestParam("dob") String dob,
+			@RequestParam("gender") String gender,
+			@RequestParam("about") String about,
+			@RequestParam("linkFace") String linkFace,
+			@RequestParam("linkYoutube") String linkYoutube) {
+		if(userCookie.equals("defaultCookieValue")) {
+			
+			
+			model.addAttribute("user", null);
+		} 
+		else {
+			Account user = userService.getAccount(userCookie);
+			int id = user.getId();
+			model.addAttribute("user", user);
+			userService.updateProfile(id, fullName, phone, dob, gender, about, "http://facebook.com/"+linkFace, "http://www.youtube.com/"+linkYoutube);
+			System.out.println("-------------====="+fullName);
+		}
+			
+		return "my_instructor_profile_view";
+	}
+
 	@Autowired
 	private AccountService userService;
 	@Autowired

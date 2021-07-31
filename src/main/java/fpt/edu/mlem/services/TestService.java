@@ -22,8 +22,7 @@ public class TestService {
 	
 	
 	public List<Test> getTest(int id){
-		//return testRepo.findByTestId(id);
-		return null;
+		return testRepo.findByTestId(id);
 	}
 	
 	

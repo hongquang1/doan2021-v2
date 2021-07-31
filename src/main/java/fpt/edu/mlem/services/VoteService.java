@@ -24,6 +24,10 @@ private VoteRepository voterepo;
 	public List<Vote> getVoteByNumber(int numVote,int courseId){
 		return voterepo.getVoteByNumberVote(numVote,courseId);
 	}
+	public List<Vote> getVoteByStudent(int id){
+		return voterepo.getVoteByStudent(id);
+	}
+	
 }
 
 

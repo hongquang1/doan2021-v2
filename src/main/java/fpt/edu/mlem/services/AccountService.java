@@ -68,7 +68,15 @@ public class AccountService {
 		account.setRole(rRepo.findById(roleId).get());
 		return repo.save(account);
 	}
-
+	public void updateProfile(int id, String fullName , String phone , String dob , String gender , String about,String linkFace , String linkYoutube) {
+		repo.updateProfile(id, fullName, phone, dob, gender, about, linkFace, linkYoutube);
+	}
+//	public void saveUpdate(Account account) {
+//		repo.save(account);
+//	}
+//	public Account getUpdateAccount(int id) {
+//		return repo.findById(id).get();
+//	}
 	public Account getAccount(String userCookie) {
 		if(userCookie.equals("defaultCookieValue")) {
 			

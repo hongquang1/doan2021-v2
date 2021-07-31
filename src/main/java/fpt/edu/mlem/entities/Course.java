@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,16 +35,19 @@ public class Course {
 	private int price;
 	private int sale;
 	private Date createDate;
+	private Date endDate;
 	private String content;
 	private String image;
 	private String urlVideoCourse;
 	private String urlYoutubeCourse;
-	
+	private String status;
+	private String startSale;
+	private String endSale;
 	@ManyToOne
 	private Level level;
 	
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private Set<Category> categories = new HashSet<Category>();
 	
 	@ManyToOne

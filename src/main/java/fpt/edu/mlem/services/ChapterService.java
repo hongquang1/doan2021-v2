@@ -30,4 +30,8 @@ public class ChapterService {
 	public List<Chapter> getByCourse(int courseId){
 		return chapterRepository.getChapterByCourse(courseId);
 	}
+	public List<Chapter> listAllChapter(){
+		return chapterRepository.findAll();
+	}
+	
 }

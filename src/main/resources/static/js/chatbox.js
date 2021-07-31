@@ -11,6 +11,11 @@ $(".chatbox").click(function () {
   }
 });
 
+// $(document).ready(function () {
+//   var list = document.getElementsByClassName("chatbox");
+//   for (var i = 0; i < list.length; i++) list[0].click();
+// });
+
 $(".close").click(function () {
   $(".dropchat").removeClass("show");
 });

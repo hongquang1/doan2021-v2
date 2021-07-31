@@ -37,8 +37,8 @@ public class Chapter {
 	private Course course;
 	
 	@OneToMany(
-			fetch = FetchType.EAGER,
-			mappedBy = "chapter"
+			mappedBy = "chapter",
+			cascade = CascadeType.ALL
 			)
 	@EqualsAndHashCode.Exclude
 	private Set<Lesson> lessonList = new HashSet<>();

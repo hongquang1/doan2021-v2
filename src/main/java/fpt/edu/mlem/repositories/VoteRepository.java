@@ -13,4 +13,7 @@ public interface VoteRepository extends CrudRepository<Vote, Integer>{
 	public List<Vote> getVoteByCourse(int course_id);
 	@Query("SELECT v FROM Vote v WHERE v.numVote = ?1 AND v.course.id = ?2")
 	public List<Vote> getVoteByNumberVote(int numVote, int course_id);
+	@Query("SELECT v FROM Vote v WHERE v.student.id = ?1")
+	public List<Vote> getVoteByStudent(int id);
+
 }
