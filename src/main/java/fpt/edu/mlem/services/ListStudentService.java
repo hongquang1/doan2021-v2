@@ -35,4 +35,10 @@ public class ListStudentService {
 	public List<ListStudent> GetBotMail(Account idStudent){
 		return listStudentRepository.getCoursebyStudent(idStudent);
 	}	
+	public void updateStatusListStudent(int idStudent,int idCourse, String status,String score, Date Datepass) {
+		listStudentRepository.updateStatus(idStudent, idCourse, status, score, Datepass);;
+	}
+	public List<ListStudent> getCoursebyStatus(int idStudent){
+		return listStudentRepository.getCoursebyStatus(idStudent);
+	}
 }

@@ -1,14 +1,15 @@
 package fpt.edu.mlem.entities;
 
-import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -19,16 +20,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Test {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int testId;
+	private int id;
 
-//	@Column(name = "tenbaithithu")
-	private String nameTest;
+	private String name;
 
-//	@Column(name = "anhbaithithu")
-	private String imageTest;
+	private String imageUrl;
+	@OneToMany(mappedBy = "test")
+	Set<Question> questionSet = new HashSet<>();
+	
+	@ManyToOne
+	private Course course;
 
 }

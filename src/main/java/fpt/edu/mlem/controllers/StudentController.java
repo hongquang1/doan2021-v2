@@ -92,6 +92,27 @@ public class StudentController {
 		}
 		return null;	
 	}
+	@RequestMapping("/MyCertificate")
+	public String MyCertificate(
+			@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+			Model model) {
+		if(userCookie.equals("defaultCookieValue")) {
+			
+			model.addAttribute("user", null);
+		} 
+		else {
+			Account user = userService.getAccount(userCookie);
+			model.addAttribute("user", user);
+			int idStudent = user.getId();
+			List<ListStudent> list = studentService.getCoursebyStatus(idStudent);
+			model.addAttribute("list", list);
+			
+			
+	
+			
+		}
+		return "certificate_view";	
+	}
     @RequestMapping(value = "/savevote", method = RequestMethod.POST)
     public String saveVote(@ModelAttribute("vote") Vote votes,@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie) {
     	Account user = userService.getAccount(userCookie);

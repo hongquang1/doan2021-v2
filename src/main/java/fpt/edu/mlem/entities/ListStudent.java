@@ -30,8 +30,9 @@ public class ListStudent {
 	@MapsId("course_id")
 	@JoinColumn(name = "course_id")
 	private Course course;
-
+	private String score;
+	private Date Datepass;
 	private Date joinDate;
 	private Date endDate;
-
+	private String status;
 }
