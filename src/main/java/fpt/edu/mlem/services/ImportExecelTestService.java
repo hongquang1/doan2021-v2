@@ -16,14 +16,20 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import fpt.edu.mlem.entities.Course;
 import fpt.edu.mlem.entities.Question;
 import fpt.edu.mlem.entities.QuestionAnswer;
 import fpt.edu.mlem.entities.Test;
+import fpt.edu.mlem.repositories.CourseRepository;
 import fpt.edu.mlem.repositories.QuestionRepository;
 import fpt.edu.mlem.repositories.TestRepository;
+import fpt.edu.mlem.requests.CreateTestRequest;
 
 @Service
 public class ImportExecelTestService {
@@ -33,13 +39,23 @@ public class ImportExecelTestService {
 	@Autowired
 	QuestionRepository questionRepository;
 	
+	@Autowired
+	CourseRepository courseRepository;
+	
+	@Autowired
+	CloudinaryService cloudinaryService;
+	
 	@Transactional
-	public List<Question> ReadDataFromExcel(String excelPath,int testId)
+	public String ReadDataFromExcel(CreateTestRequest createTestRequest)
 			throws EncryptedDocumentException, InvalidFormatException, IOException {
-		Workbook workbook = WorkbookFactory.create(new File("C:\\Users\\Admin\\Documents\\TEST.xlsx"));
+		XSSFWorkbook workbook = new XSSFWorkbook(createTestRequest.getReapExcelDataFile().getInputStream());
 		List<Question> questionList = new ArrayList<>();
 		int indexSheet = 0;
-		Test test = testRepository.getById(testId);
+		
+		Course course = courseRepository.getById(createTestRequest.getCourseId());
+		String testUrl = cloudinaryService.uploadFile(createTestRequest.getImageTest());
+		Test test = new Test(0,createTestRequest.getTestName(),testUrl,null,course);
+		test = testRepository.save(test);
 		for (Sheet sheet : workbook) {
 			System.out.println("=> " + sheet.getSheetName());
 			for (Row row : sheet) {
@@ -73,7 +89,9 @@ public class ImportExecelTestService {
 
 			}
 		}
-		return questionRepository.saveAll(questionList);
+		workbook.close();
+		questionRepository.saveAll(questionList);
+		return "successully";
 	}
 
 }
