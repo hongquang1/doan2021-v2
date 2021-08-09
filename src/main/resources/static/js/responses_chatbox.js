@@ -5,10 +5,16 @@ function getBotResponse1(input) {
     } else if (input.includes("mlem")) {
         return "MlemMlem là trang website dạy nấu ăn trực tuyến hàng đầu Việt Nam....";
     }  else if (input.includes("cơ bản")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html'>http://MlemMlem/KhoaHocCoBan</a>";
+        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHocCoBan</a>";
     }
     else if (input.includes("khóa học")) {
         return "Bạn cần chúng tôi tư vấn về khóa học nào";
+    }
+    else if(input.includes("I need advice about the Course")){
+        return "Which course do you need our advice on?"
+    }
+    else if(input.includes("I need advice about the Course")){
+        return "Which course do you need our advice on?"
     }
     if (input == "MlemMlem là gì?") {
         return "MlemMlem là trang website dạy nấu ăn trực tuyến hàng đầu Việt Nam....";

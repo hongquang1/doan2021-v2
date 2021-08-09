@@ -10,6 +10,18 @@
 
   <link href="/css/sweetalert.css" rel="stylesheet" />
   <script src="/js/sweetalert.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+  <link href="/css/ratingstar.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
   <style>
     @charset "UTF-8";
     @import url("//fonts.googleapis.com/css?family=Raleway:400,800");
@@ -304,14 +316,40 @@ body a:hover {
 </head>
 
 <body>
-
+ 
     <input id="correctAnwser" type="hidden" th:value='${test.correctAnwserList}'>
 	<div id="emc-score"></div>
 	<div class="wrap">
-	<form action="/subScore" method="post" id="subScore" >
+	<form action="/subScore" method="post" id="subScore" hidden="" >
 	<input type="text" name="score" id="score"/>
 	<input type="text" name="idTest" th:value="${tests.id}">
 </form>
+<div class="title126">
+                            <h2>BÀI KIỂM TRA CUỐI KỲ KHOÁ HỌC AN TOÀN THỰC PHẨM</h2>
+                        </div>
+<div class="faq1256">
+            <div class="container">
+                <div class="row">
+ 		<div class="col-lg-4 col-md-6">
+                        <div class="certi_form rght1528">
+                            <div class="test_timer_bg">
+                                <ul class="test_timer_left">
+                                 
+                                    <li>
+                                        <div class="timer_time">
+                                            <h4 id="timer">30:00</h4>
+                                       
+                                        </div>
+                                    </li>
+                                      
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+             
 		<someHtmlTag th:each="question : ${test.questionList}">
 		<section data-quiz-item>
 			<div class="question" th:text="${question.content}"></div>
@@ -605,7 +643,14 @@ const generatePDF = async(name) => {
 };
 		
   </script>
-
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/test-timer.js"></script>
+    <script src="/js/night-mode.js"></script>
 </body>
 
 </html>

@@ -276,6 +276,24 @@ public class PublicController {
 			
 		return "KhoaHocCuaToi";
 	}
+
+	@RequestMapping("/news")
+	public String News(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+			Model model) {
+		if(userCookie.equals("defaultCookieValue")) {
+			
+			
+			model.addAttribute("user", null);
+		} 
+		else {
+			Account user = userService.getAccount(userCookie);
+		
+			model.addAttribute("user", user);
+
+		}
+			
+		return "post_view";
+	}
 	@RequestMapping("/profileAccount")
 	public String Profile(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
 			Model model) {

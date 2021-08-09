@@ -27,9 +27,9 @@ public class ListTeacher {
 	private Account teacher;
 
 	@ManyToOne
-	@MapsId("chapter_id")
-	@JoinColumn(name = "chapter_id")
-	private Chapter chapter;
+	@MapsId("id")
+	@JoinColumn(name = "id")
+	private Course course;
 
 	private Date joinDate;
 	private Date endDate;

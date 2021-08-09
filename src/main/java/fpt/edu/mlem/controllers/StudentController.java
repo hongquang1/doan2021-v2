@@ -54,11 +54,15 @@ public class StudentController {
 			
 			for (ListStudent listStudent : list) {
 				if(listStudent.getCourse().getId()==id) {
+					if(id != 1) {
 					model.addAttribute("chapters", chapterService.getByCourse(id));
-//					System.out.println(chapterService.getByCourse(id).get(0).getLessonList().size());
+					System.out.println(chapterService.getByCourse(id).get(0).getLessonList().size());
 					return "course_study_view";
-				
-					
+					}
+					if(id == 1) {
+						model.addAttribute("idCo", id);
+						return "study";
+					}
 				}
 			}
 			

@@ -106,10 +106,10 @@
                                                  <label for="name">Ngày cấp: </label> <label  th:text="${l.Datepass}"></label> <br>
                                                  <label for="name">Điểm thi: </label> <label th:text="${l.score}"></label><label>/100</label> <br>
                                                 <input required type="text" th:value="${l.student.fullName}" name="Name" autocomplete="name" hidden="" placeholder="Tên Học Viên" id="name" minlength="3" maxlength="25">
-                                                <input name="" id="typeCourse" hidden="" th:value="${l.course.name}">
+                                                <input name="" id="nameCourse" hidden="" th:value="${l.course.name}">
 
 
-                                                <input required type="text" hidden=""  name="Name" autocomplete="name" th:value="${l.course.level.name}" id="nameCourse" minlength="3" maxlength="50">
+                                                <input required type="text" hidden=""  name="Name" autocomplete="name" th:value="${l.course.level.name}" id="typeCourse" minlength="3" maxlength="50">
 
                                                 <button class="login-btn" id="submitBtn" type="submit">Xem chứng chỉ</button>
                                             </div>

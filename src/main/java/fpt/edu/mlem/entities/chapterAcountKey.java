@@ -17,7 +17,7 @@ public class chapterAcountKey implements Serializable  {
 	
 	int studentId;
 
-	@Column(name = "chapter_id")
-	int chapterId;
+	@Column(name = "id")
+	int id;
 	
 }

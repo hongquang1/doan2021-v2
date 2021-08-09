@@ -31,7 +31,7 @@ function sendButton1() {
     userText = "MlemMlem là gì?";
   }
 
-  let userHtml = '<div class="list revange "> <div class="chat-content" style="background-color:#5ca6fa;width:auto;max-width:80%;border-radius: 10px 10px 0px 10px;"> <p style="color:white">' + userText + '</p> </div></div><div class="list " id="chatbox"></div>';
+  let userHtml = '<div class="list revange "> <div class="chat-content" style="background-color:#5ca6fa;max-width:80%;border-radius: 10px 10px 0px 10px;"> <p style="color:white;width:100%">' + userText + '</p> </div></div><div class="list " id="chatbox"></div>';
 
   $("#textInput").val("");
 
@@ -69,7 +69,7 @@ function buttonSendText1(sampleText) {
 
   userText = sampleText;
 
-  let userHtml = '<div class="list revange "> <div class="chat-content" style="background-color:#5ca6fa;width:40px;border-radius: 10px 10px 0px 10px;">  <p ><span style="font-size: 15px;">' + sampleText + '</span></p></div></div><div class="list " id="chatbox"></div>';
+  let userHtml = '<div class="list revange "> <div class="chat-content" style="background-color:#5ca6fa;width:80px;border-radius: 10px 10px 0px 10px;">  <p ><span style="font-size: 12px;color:white">' + sampleText + '</span></p></div></div>';
 
   $("#textInput").val("");
   $("#chatbox").replaceWith(userHtml + '<div class="list " id="chatbox"></div>');
